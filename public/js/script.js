@@ -1,10 +1,9 @@
-// Prevent double initialization
-if (window.wrestleGPTInitialized) {
-    console.warn('WrestleGPT already initialized, skipping...');
-    return;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Prevent double initialization
+    if (window.wrestleGPTInitialized) {
+        console.warn('WrestleGPT already initialized, skipping...');
+        return;
+    }
     window.wrestleGPTInitialized = true;
     const askButton = document.getElementById('askButton');
     const wrestlerOne = document.getElementById('wrestlerOne');
