@@ -331,9 +331,13 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    /* Hide navbar brand on mobile to avoid duplication */
-    .navbar-brand {
+    /* Hide hero title on mobile to avoid duplication with navbar */
+    .hero-title {
         display: none !important;
+    }
+    
+    .hero-subtitle {
+        margin-top: 0;
     }
     
     /* Show mobile CTA button */
