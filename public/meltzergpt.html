@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/5d009b8ae0.js" crossorigin="anonymous"></script>
+    <title>WrestleGPT</title>
+</head>
+<body>
+    <div class="container d-flex flex-row justify-content-center">
+      <div class="row">
+        <div class="col-md-6">
+          <section id="left-side" class="p-2 d-flex flex-column justify-content-between">
+            <!-- Left side content -->
+            <form class="flex-grow-1">
+                <div class="form-group">
+                  <label for="wrestlerOne">First Wrestler</label>
+                  <input type="text" class="form-control" id="wrestlerOne" placeholder="Kenny Omega">
+                </div>
+                <div class="form-group">
+                  <label for="wrestlerTwo">Second Wrestler</label>
+                  <input type="text" class="form-control" id="wrestlerTwo" placeholder="Randy Orton">
+                </div>
+                <div class="form-group">
+                  <label for="matchGimmick">Match Gimmick</label>
+                  <input type="text" class="form-control" id="matchGimmick" placeholder="Regular Singles Match, No Holds Barred, etc.">
+                </div>
+                <button type="button" class="btn btn-default" id="askButton">Submit</button>
+                <!--
+                  <button id="askButton" class="btn btn-primary mt-3">Ask</button>
+                -->
+              </form>
+        </section>
+      </div>
+
+      <div class="col-md-6">
+        <section id="right-side" class="p-2 d-flex flex-column justify-content-between">
+          <!-- Right side content -->
+          <div id="answerDiv" class="border p-3 bg-light"></div>
+          <button id="copyButton" class="btn btn-secondary mt-3">Copy Response</button>
+        </section>
+      </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Custom Script -->
+    <script src="js/script.js"></script>
+</body>
+</body>
+</html>
