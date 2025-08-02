@@ -31,15 +31,23 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Toggle dropdown
-        customDropdown.addEventListener('click', function(e) {
+        // Toggle dropdown - only on the selected area, not options
+        const clickHandler = function(e) {
+            if (e.target.closest('.dropdown-options')) {
+                // If clicking on options, handle separately
+                return;
+            }
             e.stopPropagation();
             console.log('Dropdown clicked!');
             customDropdown.classList.toggle('open');
-        });
+        };
+        
+        customDropdown.addEventListener('click', clickHandler);
         
         // Handle option selection
         dropdownOptions.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent bubbling to parent
+            
             if (e.target.classList.contains('dropdown-option')) {
                 const value = e.target.getAttribute('data-value');
                 const text = e.target.textContent;
