@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'hunter-s-thompson': 'Write in the gonzo journalism style of Hunter S. Thompson with wild energy, stream-of-consciousness, and counter-culture references.',
             'morgan-freeman': 'Write as if Morgan Freeman is narrating, with his calm, wise, and philosophical tone.',
             'david-attenborough': 'Write as if documenting wildlife for a nature documentary, treating wrestlers as fascinating creatures in their natural habitat.',
-            'gordon-ramsay': 'Write in the passionate, intense style of Gordon Ramsay with dramatic emphasis and cooking metaphors.'
+            'gordon-ramsay': 'Write in the explosive, insulting style of Gordon Ramsay. Use creative insults like "donkey", "muppet", "bloody hell", and "IT\'S RAW!". Compare wrestlers to undercooked food, kitchen disasters, and incompetent chefs. Be brutally honest, use ALL CAPS for shouting, and include cooking metaphors. Call out terrible moves like they\'re disgusting dishes. Be passionate, angry, and hilarious.'
         };
         
         return styleInstructions[selectedStyle] || styleInstructions['wrestling-journalist'];
