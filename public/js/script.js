@@ -16,6 +16,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Track if we have generated results
     let hasGeneratedMatch = false;
+    
+    // Custom dropdown functionality
+    const customDropdown = document.getElementById('authorStyleDropdown');
+    const dropdownSelected = document.getElementById('authorStyleSelected');
+    const dropdownOptions = document.getElementById('authorStyleOptions');
+    const hiddenInput = document.getElementById('authorStyle');
+    
+    // Toggle dropdown
+    customDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+        customDropdown.classList.toggle('open');
+    });
+    
+    // Handle option selection
+    dropdownOptions.addEventListener('click', function(e) {
+        if (e.target.classList.contains('dropdown-option')) {
+            const value = e.target.getAttribute('data-value');
+            const text = e.target.textContent;
+            
+            dropdownSelected.textContent = text;
+            hiddenInput.value = value;
+            customDropdown.classList.remove('open');
+        }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+        customDropdown.classList.remove('open');
+    });
 
     function getStyleInstruction() {
         const selectedStyle = authorStyle.value;
