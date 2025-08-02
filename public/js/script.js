@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrestlerOne = document.getElementById('wrestlerOne');
     const wrestlerTwo = document.getElementById('wrestlerTwo');
     const matchGimmick = document.getElementById('matchGimmick');
+    const authorStyle = document.getElementById('authorStyle');
     const answerDiv = document.getElementById('answerDiv');
     const copyButton = document.getElementById('copyButton');
     const autocompleteDropdown = document.getElementById('autocompleteDropdown');
@@ -16,12 +17,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Track if we have generated results
     let hasGeneratedMatch = false;
 
+    function getStyleInstruction() {
+        const selectedStyle = authorStyle.value;
+        
+        const styleInstructions = {
+            'wrestling-journalist': 'Write in the tone of a professional wrestling blogger and journalist.',
+            'shakespeare': 'Write in the style of William Shakespeare with eloquent Elizabethan language, "thee" and "thou", poetic flourishes, and dramatic metaphors.',
+            'edgar-allan-poe': 'Write in the dark, gothic style of Edgar Allan Poe with mysterious atmosphere, dramatic tension, and haunting descriptions.',
+            'mark-twain': 'Write in the witty, folksy style of Mark Twain with humor, colloquial language, and keen social observations.',
+            'charles-dickens': 'Write in the verbose, descriptive style of Charles Dickens with rich character details and social commentary.',
+            'ernest-hemingway': 'Write in the concise, understated style of Ernest Hemingway with short sentences and subtle emotion.',
+            'jane-austen': 'Write in the refined, witty style of Jane Austen with social observations and gentle satire.',
+            'dr-seuss': 'Write in the playful, rhyming style of Dr. Seuss with whimsical language and creative wordplay.',
+            'hunter-s-thompson': 'Write in the gonzo journalism style of Hunter S. Thompson with wild energy, stream-of-consciousness, and counter-culture references.',
+            'morgan-freeman': 'Write as if Morgan Freeman is narrating, with his calm, wise, and philosophical tone.',
+            'david-attenborough': 'Write as if documenting wildlife for a nature documentary, treating wrestlers as fascinating creatures in their natural habitat.',
+            'gordon-ramsay': 'Write in the passionate, intense style of Gordon Ramsay with dramatic emphasis and cooking metaphors.'
+        };
+        
+        return styleInstructions[selectedStyle] || styleInstructions['wrestling-journalist'];
+    }
+
     function generatePrompt() {
         return `
             I already have an HTML container with an ID of right-side, and I need you to create its innerHTML.
             I want to create a review for a professional wrestling match between ${wrestlerOne.value} and ${wrestlerTwo.value}.  
             The gimmick of this wrestling match will be ${matchGimmick.value}.
-            The review should be written in the tone of a wrestling blogger. 
+            
+            WRITING STYLE: ${getStyleInstruction()} 
             The review will give a star rating from 0 to 5 stars, in .25 star increments.  
             Most matches should be 2 or 3 stars, but on very rare occasions more.
             
