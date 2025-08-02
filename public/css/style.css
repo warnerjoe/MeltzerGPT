@@ -151,12 +151,18 @@ body > div {
 .form-group {
     margin-bottom: 2.5rem;
     position: relative;
-    z-index: 1;
+    z-index: auto;
 }
 
 #wrestlerForm {
     position: relative;
     z-index: 1;
+}
+
+/* Ensure dropdown form group has higher z-index */
+.form-group:has(.custom-dropdown) {
+    z-index: 200;
+    overflow: visible;
 }
 
 label {
@@ -238,22 +244,23 @@ label {
 
 .dropdown-options {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 2px);
     left: -2px;
     right: -2px;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.98);
     border: 2px solid var(--primary-gold);
     border-top: none;
     border-radius: 0 0 8px 8px;
     max-height: 300px;
     overflow-y: auto;
-    z-index: 9999;
+    z-index: 99999 !important;
     display: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 }
 
 .custom-dropdown.open .dropdown-options {
-    display: block;
+    display: block !important;
+    z-index: 99999 !important;
 }
 
 .dropdown-option {
@@ -643,6 +650,10 @@ label {
         0 10px 30px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 215, 0, 0.3);
     position: relative;
+    overflow: visible;
+}
+
+.results-card {
     overflow: hidden;
 }
 
