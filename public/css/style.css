@@ -251,11 +251,13 @@ label {
     border: 2px solid var(--primary-gold);
     border-top: none;
     border-radius: 0 0 8px 8px;
-    max-height: 300px;
-    overflow-y: auto;
+    max-height: 400px;
+    overflow-y: scroll; /* Force scrollbar to always show */
+    overflow-x: hidden;
     z-index: 99999 !important;
     display: none;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    margin-bottom: 50px; /* Extra space at bottom */
 }
 
 .custom-dropdown.open .dropdown-options {
@@ -632,6 +634,7 @@ label {
     transform: translateY(20px);
     transition: all 0.5s ease;
     display: none;
+    padding-bottom: 300px; /* Add space for dropdown */
 }
 
 .view-section.active {
@@ -650,7 +653,8 @@ label {
         0 10px 30px rgba(0, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 215, 0, 0.3);
     position: relative;
-    overflow: visible;
+    overflow: visible !important;
+    min-height: 500px;
 }
 
 .results-card {
