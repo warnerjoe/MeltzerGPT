@@ -11,7 +11,7 @@ const logger          = require('morgan');
 const { MongoClient } = require('mongodb');
 const connectDB       = require('./config/database')
 const mainRoutes      = require('./routes/main');
-const Wrestler        = require('./models/Wrestler');
+const Wrestler        = require('./models/wrestler');
 
 const PORT            = process.env.PORT || 3000;
 
