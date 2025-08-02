@@ -1,4 +1,11 @@
+// Prevent double initialization
+if (window.wrestleGPTInitialized) {
+    console.warn('WrestleGPT already initialized, skipping...');
+    return;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    window.wrestleGPTInitialized = true;
     const askButton = document.getElementById('askButton');
     const wrestlerOne = document.getElementById('wrestlerOne');
     const wrestlerTwo = document.getElementById('wrestlerTwo');
