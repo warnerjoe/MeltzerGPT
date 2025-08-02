@@ -18,33 +18,48 @@ document.addEventListener('DOMContentLoaded', function() {
     let hasGeneratedMatch = false;
     
     // Custom dropdown functionality
-    const customDropdown = document.getElementById('authorStyleDropdown');
-    const dropdownSelected = document.getElementById('authorStyleSelected');
-    const dropdownOptions = document.getElementById('authorStyleOptions');
-    const hiddenInput = document.getElementById('authorStyle');
-    
-    // Toggle dropdown
-    customDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-        customDropdown.classList.toggle('open');
-    });
-    
-    // Handle option selection
-    dropdownOptions.addEventListener('click', function(e) {
-        if (e.target.classList.contains('dropdown-option')) {
-            const value = e.target.getAttribute('data-value');
-            const text = e.target.textContent;
-            
-            dropdownSelected.textContent = text;
-            hiddenInput.value = value;
-            customDropdown.classList.remove('open');
+    function initCustomDropdown() {
+        const customDropdown = document.getElementById('authorStyleDropdown');
+        const dropdownSelected = document.getElementById('authorStyleSelected');
+        const dropdownOptions = document.getElementById('authorStyleOptions');
+        const hiddenInput = document.getElementById('authorStyle');
+        
+        console.log('Dropdown elements:', { customDropdown, dropdownSelected, dropdownOptions, hiddenInput });
+        
+        if (!customDropdown || !dropdownSelected || !dropdownOptions || !hiddenInput) {
+            console.error('Dropdown elements not found!');
+            return;
         }
-    });
+        
+        // Toggle dropdown
+        customDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+            console.log('Dropdown clicked!');
+            customDropdown.classList.toggle('open');
+        });
+        
+        // Handle option selection
+        dropdownOptions.addEventListener('click', function(e) {
+            if (e.target.classList.contains('dropdown-option')) {
+                const value = e.target.getAttribute('data-value');
+                const text = e.target.textContent;
+                
+                console.log('Option selected:', { value, text });
+                
+                dropdownSelected.textContent = text;
+                hiddenInput.value = value;
+                customDropdown.classList.remove('open');
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            customDropdown.classList.remove('open');
+        });
+    }
     
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function() {
-        customDropdown.classList.remove('open');
-    });
+    // Initialize dropdown after DOM is ready
+    initCustomDropdown();
 
     function getStyleInstruction() {
         const selectedStyle = authorStyle.value;
