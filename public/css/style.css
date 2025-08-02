@@ -1,0 +1,671 @@
+/* ===== WRESTLING THEME VARIABLES ===== */
+:root {
+    --primary-gold: #FFD700;
+    --secondary-gold: #FFA500;
+    --dark-bg: #0a0a0a;
+    --darker-bg: #000000;
+    --light-text: #ffffff;
+    --red-accent: #DC143C;
+    --blue-accent: #1E90FF;
+    --success-green: #28a745;
+    --card-bg: rgba(20, 20, 20, 0.95);
+    --border-gold: #B8860B;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    color: var(--light-text);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Wrestling ring ropes background effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255, 215, 0, 0.1) 100px, rgba(255, 215, 0, 0.1) 102px),
+        repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255, 215, 0, 0.05) 100px, rgba(255, 215, 0, 0.05) 102px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ===== NAVIGATION ===== */
+.navbar {
+    background: linear-gradient(90deg, var(--darker-bg) 0%, rgba(255, 215, 0, 0.1) 50%, var(--darker-bg) 100%);
+    border-bottom: 3px solid var(--primary-gold);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+    margin-bottom: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-brand {
+    color: var(--primary-gold) !important;
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.navbar-nav > li > a {
+    color: var(--light-text) !important;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav > li > a:hover {
+    color: var(--primary-gold) !important;
+    text-shadow: 0 0 10px var(--primary-gold);
+}
+
+.navbar-nav > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav > li > a:hover::after {
+    width: 100%;
+}
+
+/* ===== MAIN CONTAINER ===== */
+body > div {
+    padding: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 60px; /* Add padding to account for fixed navbar */
+}
+
+/* ===== MELTZERGPT SPECIFIC STYLES ===== */
+#left-side, #right-side {
+    background: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 3rem !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#left-side::before, #right-side::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    animation: spotlight 10s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes spotlight {
+    0% { transform: translate(-30%, -30%); }
+    100% { transform: translate(30%, 30%); }
+}
+
+/* ===== FORM STYLES ===== */
+.form-group {
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+#wrestlerForm {
+    position: relative;
+    z-index: 1;
+}
+
+label {
+    color: var(--primary-gold);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: block;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.form-control {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--border-gold);
+    color: var(--light-text);
+    font-size: 1.6rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    outline: none;
+    color: var(--light-text);
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.btn-default {
+    background: linear-gradient(45deg, var(--red-accent) 0%, var(--primary-gold) 100%);
+    color: var(--light-text);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-default:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(45deg, var(--primary-gold) 0%, var(--red-accent) 100%);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, var(--blue-accent) 0%, var(--primary-gold) 100%);
+    color: var(--light-text);
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+    background: linear-gradient(45deg, var(--primary-gold) 0%, var(--blue-accent) 100%);
+}
+
+/* Button ripple effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Ensure primary button inherits base button styles */
+.btn-primary::before {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== ANSWER DISPLAY ===== */
+#answerDiv {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+    border: 3px solid var(--primary-gold);
+    border-radius: 15px;
+    padding: 3rem;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+    text-align: left;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    box-shadow: 
+        inset 0 0 20px rgba(255, 215, 0, 0.1),
+        0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+#answerDiv:empty::before {
+    content: 'Your match review will appear here...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 215, 0, 0.5);
+    font-style: italic;
+    font-size: 1.8rem;
+}
+
+/* Style the generated content - Force all styles to override any inline styles */
+#answerDiv h1 {
+    color: var(--primary-gold) !important;
+    font-size: 3.6rem !important;
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8) !important;
+    border-bottom: 3px solid var(--primary-gold) !important;
+    padding-bottom: 1rem !important;
+    background: transparent !important;
+}
+
+#answerDiv h2 {
+    color: var(--secondary-gold) !important;
+    font-size: 2.8rem !important;
+    text-align: center !important;
+    margin: 2rem 0 !important;
+    text-transform: uppercase !important;
+    background: transparent !important;
+}
+
+#answerDiv h3 {
+    color: var(--primary-gold) !important;
+    font-size: 2.2rem !important;
+    margin: 2rem 0 !important;
+    text-align: center !important;
+    background: transparent !important;
+}
+
+#answerDiv p {
+    margin-bottom: 1.5rem !important;
+    text-align: justify !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    background: transparent !important;
+}
+
+/* Override any potential inline styles on all elements */
+#answerDiv * {
+    background-color: transparent !important;
+    background-image: none !important;
+    background: transparent !important;
+}
+
+#answerDiv {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force all divs inside answer to be transparent and inherit text color */
+#answerDiv div {
+    background: transparent !important;
+    color: inherit !important;
+}
+
+/* Force specific text color for any elements that might have inline styles */
+#answerDiv span, #answerDiv div, #answerDiv section {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Star ratings */
+#answerDiv .star {
+    color: var(--primary-gold);
+    font-size: 2.4rem;
+}
+
+/* ===== AUTOCOMPLETE DROPDOWN ===== */
+#autocompleteDropdown, #autocompleteDropdownTwo {
+    background: var(--card-bg);
+    border: 2px solid var(--border-gold);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+#autocompleteDropdown.show, #autocompleteDropdownTwo.show {
+    display: block;
+}
+
+#autocompleteDropdown .dropdown-item,
+#autocompleteDropdownTwo .dropdown-item {
+    display: block;
+    padding: 1.2rem 1.5rem;
+    color: var(--light-text);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+#autocompleteDropdown .dropdown-item:hover,
+#autocompleteDropdownTwo .dropdown-item:hover {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--primary-gold);
+    padding-left: 2rem;
+}
+
+/* ===== LOADING ANIMATION ===== */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-gold);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-gold);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+    
+    .col-md-6 {
+        margin-bottom: 3rem;
+    }
+    
+    /* Simplify mobile layout */
+    body > div {
+        padding: 2rem 1rem;
+    }
+    
+    .container {
+        padding-top: 40px;
+    }
+    
+    .view-container {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Reduce card complexity on mobile */
+    .match-setup-card, .results-card {
+        padding: 2rem !important;
+        border-width: 2px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Remove spotlight effect on mobile */
+    .match-setup-card::before, .results-card::before {
+        display: none;
+    }
+    
+    #answerDiv {
+        padding: 2rem;
+        border-width: 2px;
+        font-size: 1.4rem;
+        box-shadow: 
+            inset 0 0 10px rgba(255, 215, 0, 0.05),
+            0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .results-header {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .btn {
+        padding: 1.2rem 2rem;
+        font-size: 1.4rem;
+        width: 100%;
+    }
+    
+    /* Reduce title sizes on mobile */
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    #answerDiv h1 {
+        font-size: 2.4rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    #answerDiv h2 {
+        font-size: 2rem !important;
+        margin: 1.5rem 0 !important;
+    }
+    
+    #answerDiv h3 {
+        font-size: 1.8rem !important;
+        margin: 1.5rem 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens - even more minimal */
+    .match-setup-card, .results-card {
+        padding: 1.5rem !important;
+        border-radius: 10px;
+        margin: 0 0.5rem;
+    }
+    
+    #answerDiv {
+        padding: 1.5rem;
+        font-size: 1.3rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.8rem;
+    }
+    
+    body > div {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* ===== VIEW CONTAINER STYLES ===== */
+.view-container {
+    position: relative;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.view-section {
+    position: relative; /* Changed from absolute to relative */
+    width: 100%;
+    max-width: 800px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.view-section.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    display: block;
+}
+
+.match-setup-card, .results-card {
+    background: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 4rem;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.match-setup-card::before, .results-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    animation: spotlight 10s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section-title {
+    color: var(--primary-gold);
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 1;
+}
+
+.button-group {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+    gap: 2rem;
+}
+
+.match-results {
+    position: relative;
+    z-index: 1;
+}
+
+/* Primary button style */
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+    color: var(--dark-bg);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(45deg, var(--secondary-gold) 0%, var(--primary-gold) 100%);
+    color: var(--dark-bg);
+}
+
+/* Disabled button state */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn:disabled:hover {
+    transform: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== ENTRANCE ANIMATION ===== */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

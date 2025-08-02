@@ -1,0 +1,59 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<div class="container">
+    <div class="text-center mb-4">
+        <h1 style="color: var(--primary-gold); font-size: 4rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.8); margin-top: 2rem;">
+            MELTZER<span style="color: var(--red-accent);">GPT</span>
+        </h1>
+        <p style="color: var(--light-text); font-size: 1.8rem; font-style: italic;">
+            Generate epic wrestling match reviews with AI
+        </p>
+    </div>
+    
+    <div class="view-container">
+        <!-- Input View -->
+        <div id="input-view" class="view-section active">
+            <div class="match-setup-card">
+                <h2 class="section-title">Create Your Match</h2>
+                <form id="wrestlerForm">
+                    <div class="form-group">
+                        <label for="wrestlerOne">First Wrestler</label>
+                        <input type="text" class="form-control" id="wrestlerOne" placeholder="Kenny Omega">
+                        <!-- Dropdown to display autocomplete suggestions for wrestler one -->
+                        <div id="autocompleteDropdown" class="dropdown-menu" aria-labelledby="wrestlerOne"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="wrestlerTwo">Second Wrestler</label>
+                        <input type="text" class="form-control" id="wrestlerTwo" placeholder="Randy Orton">
+                        <!-- Dropdown to display autocomplete suggestions for wrestler two -->
+                        <div id="autocompleteDropdownTwo" class="dropdown-menu" aria-labelledby="wrestlerTwo"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="matchGimmick">Match Gimmick</label>
+                        <input type="text" class="form-control" id="matchGimmick" placeholder="Steel Cage Match">
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-default" id="askButton">Generate Match</button>
+                        <button type="button" class="btn btn-secondary" id="backToResultsBtn" disabled>Back to Results</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results View -->
+        <div id="results-view" class="view-section">
+            <div class="results-card">
+                <div class="results-header">
+                    <button type="button" class="btn btn-primary" id="newMatchBtn">New Match</button>
+                    <button id="copyButton" class="btn btn-secondary">Copy Response</button>
+                </div>
+                <div id="answerDiv" class="match-results"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+
+<%- include('partials/footer') %>
