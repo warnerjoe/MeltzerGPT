@@ -3,6 +3,13 @@
 
 <div class="hero-container">
     <div class="hero-content">
+        <div class="hero-cta-mobile">
+            <a href="/meltzergpt" class="cta-button-mobile">
+                <span class="button-text">Create Match</span>
+                <span class="button-icon">🤼‍♂️</span>
+            </a>
+        </div>
+        
         <div class="hero-logo">
             <h1 class="hero-title">
                 <span class="title-main">WRESTLE</span><span class="title-accent">GPT</span>
@@ -289,8 +296,57 @@
     100% { transform: translate(30%, 30%); }
 }
 
+/* Mobile CTA Button */
+.hero-cta-mobile {
+    display: none;
+    margin-bottom: 2rem;
+}
+
+.cta-button-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(45deg, var(--red-accent) 0%, var(--primary-gold) 100%);
+    color: var(--darker-bg);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 1.5rem 3rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+}
+
+.cta-button-mobile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    text-decoration: none;
+    color: var(--darker-bg);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    /* Hide navbar brand on mobile to avoid duplication */
+    .navbar-brand {
+        display: none !important;
+    }
+    
+    /* Show mobile CTA button */
+    .hero-cta-mobile {
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Hide desktop CTA */
+    .hero-cta {
+        display: none;
+    }
+    
     .hero-container {
         min-height: calc(100vh - 50px);
         padding: 1rem;
@@ -306,19 +362,8 @@
         padding: 1.5rem;
     }
     
-    .cta-button {
-        font-size: 1.6rem;
-        padding: 1.5rem 3rem;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .button-text {
-        font-size: 1.4rem;
-    }
-    
-    .button-icon {
-        font-size: 2rem;
+    .hero-logo {
+        margin-bottom: 2rem;
     }
 }
 
