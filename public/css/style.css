@@ -204,6 +204,7 @@ label {
     min-height: 50px;
     display: flex;
     align-items: center;
+    z-index: 100;
 }
 
 .custom-dropdown:hover {
@@ -246,8 +247,9 @@ label {
     border-radius: 0 0 8px 8px;
     max-height: 300px;
     overflow-y: auto;
-    z-index: 1000;
+    z-index: 9999;
     display: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .custom-dropdown.open .dropdown-options {
